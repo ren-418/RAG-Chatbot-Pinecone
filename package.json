@@ -1,0 +1,45 @@
+{
+  "name": "chatbot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "upload-faq": "node scripts/upload-faq.js",
+    "test-pinecone": "node scripts/test-pinecone.js",
+    "test-openai": "node scripts/test-openai.js",
+    "test-env": "node scripts/test-env.js",
+    "create-index": "node scripts/create-pinecone-index.js",
+    "create-openai-index": "node scripts/create-pinecone-index.js openai-index 1536",
+    "create-llama-index": "node scripts/create-pinecone-index.js llama-index 1024",
+    "verify-pinecone": "node scripts/verify-pinecone.js",
+    "test-connection": "node scripts/test-connection.js",
+    "check-pinecone": "node scripts/check-pinecone-project.js",
+    "check-status": "node scripts/check-pinecone-status.js"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.1.1",
+    "@chakra-ui/react": "^2.8.2",
+    "@chakra-ui/theme-tools": "^2.1.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "framer-motion": "^11.2.6",
+    "@langchain/core": "^0.3.57",
+    "@langchain/openai": "^0.0.14",
+    "@langchain/pinecone": "^0.0.3",
+    "@pinecone-database/pinecone": "^2.0.0",
+    "dotenv": "^16.3.1",
+    "langchain": "^0.3.27",
+    "next": "^15.3.3",
+    "node-fetch": "^3.3.2",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "eslint": "8.56.0",
+    "eslint-config-next": "14.0.4"
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "faqs": [
+    {
+      "question": "What is an ARG?",
+      "answer": "An ARG (Alternate Reality Game) is an interactive networked narrative that uses the real world as a platform and employs transmedia storytelling to deliver a story that may be altered by players' ideas or actions."
+    },
+    {
+      "question": "How do I start playing an ARG?",
+      "answer": "You can start playing an ARG by looking for 'rabbit holes' (entry points), following clues on social media, participating in community discussions, and solving puzzles. Many ARGs begin with a mysterious website or social media post."
+    },
+    {
+      "question": "What are rabbit holes in ARGs?",
+      "answer": "Rabbit holes are the entry points into an ARG - they're the first clues or pieces of content that players discover that lead them into the game. These could be mysterious websites, strange social media posts, or unusual advertisements."
+    },
+    {
+      "question": "What is the purpose of ARG?",
+      "answer": "The purpose of ARG is to create an immersive and interactive experience that allows players to explore a story or narrative in a unique and engaging way. It encourages players to think creatively, solve puzzles, and collaborate with others to uncover the story's secrets."
+    },
+    {
+      "question": "What is the best way to participate in an ARG?",
+      "answer": "The best way to participate in an ARG is to be open to new ideas, be willing to think creatively, and be willing to collaborate with others. It's also important to be patient and persistent, as many ARGs can be quite challenging."
+    },
+    {
+      "question": "What tools do I need to play ARGs?",
+      "answer": "Common tools for ARG players include: web browsers, text editors, image editing software, audio analysis tools, cipher/code solving tools, and communication platforms like Discord. Your smartphone can also be useful for QR codes and GPS coordinates."
+    },
+    {
+      "question": "Are ARGs dangerous?",
+      "answer": "Generally, ARGs are safe as they're designed as entertainment experiences. However, players should always prioritize their safety, avoid sharing personal information, and never put themselves in dangerous situations. If an ARG asks you to do something unsafe, it's best to stop participating."
+    },
+    {
+      "question": "What are some famous ARGs?",
+      "answer": "Some notable ARGs include 'I Love Bees' (Halo 2 promotion), 'Year Zero' (Nine Inch Nails album), 'Cicada 3301', 'The Beast' (A.I. movie promotion), and 'Why So Serious' (The Dark Knight promotion). These games helped establish many common ARG techniques and conventions."
+    },
+    {
+      "question": "How long do ARGs typically last?",
+      "answer": "ARG duration varies greatly. Some promotional ARGs might last a few weeks or months, while others can run for years. Some ARGs have definite endings, while others remain open-ended or evolve into new narratives."
+    },
+    {
+      "question": "What skills do I need for ARGs?",
+      "answer": "Useful skills include problem-solving, pattern recognition, basic cryptography, research abilities, and teamwork. Technical skills like basic programming, image/audio editing, and web searching are also helpful, but not always necessary."
+    },
+    {
+      "question": "How can I find active ARGs?",
+      "answer": "Active ARGs can be found through Reddit communities like r/ARG, Discord servers, ARG tracking websites, social media hashtags (#ARG, #AlternateRealityGame), and forums dedicated to ARG discussion. Sometimes ARGs are also announced through marketing campaigns or mysterious social media posts."
+    },
+    {
+      "question": "What is an ARGS?",
+      "answer": "ARGS stands for Alternate Reality Game Solving/Solvers. These are communities or groups of players who work together to solve ARGs. They often collaborate through Discord servers, forums, or wikis to share information and solve puzzles."
+    },
+    {
+      "question": "Can I create my own ARG?",
+      "answer": "Yes, anyone can create an ARG! Key considerations include: planning your narrative, creating engaging puzzles, establishing distribution channels, managing player interaction, and ensuring player safety. Start small and focus on creating an engaging story with interesting puzzles."
+    },
+    {
+      "question": "What is a trailhead in ARGs?",
+      "answer": "A trailhead is another term for a rabbit hole - it's the initial entry point into an ARG. It's designed to catch potential players' attention and draw them into the game's narrative. Trailheads can be anything from mysterious websites to coded messages in advertisements."
+    },
+    {
+      "question": "How do I know if something is part of an ARG?",
+      "answer": "Common signs include: unusual patterns in normal media, hidden messages, cryptic codes, mysterious websites or social media accounts, interconnected puzzles, and references to fictional organizations or events. If something seems intentionally mysterious or puzzle-like, it might be part of an ARG."
+    }
+  ]
+}
