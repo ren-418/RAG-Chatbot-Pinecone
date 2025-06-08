@@ -18,7 +18,7 @@
   height: 500px;
   width: 500px;
   overflow-y: scroll;
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   border-radius: 1rem;
   padding: 1rem;
 }
@@ -30,7 +30,7 @@
 
 .form {
   display: flex;
-  border: 1px solid grey;
+  /* border: 1px solid grey; */
   padding: 0.5rem;
   border-radius: 1rem;
   margin: 0.5rem;
@@ -66,4 +66,8 @@
   padding: 1rem;
   border-radius: 1rem;
   margin: 1rem 0 1rem 0;
+}
+
+.css-l6lery {
+  border: none;
 }
