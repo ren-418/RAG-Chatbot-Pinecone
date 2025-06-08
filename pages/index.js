@@ -21,7 +21,6 @@ import {
   DrawerBody,
   useDisclosure,
   Container,
-  Tooltip,
 } from "@chakra-ui/react";
 import { SunIcon, MoonIcon, ArrowUpIcon, HamburgerIcon, AddIcon, DeleteIcon, CloseIcon } from "@chakra-ui/icons";
 import { SquareCircleIcon } from '@primer/octicons-react';
@@ -151,26 +150,22 @@ export default function Home() {
             <HStack justify="space-between" w="full" px={2}>
               <Heading size="md">Chats</Heading>
               <HStack spacing={2}>
-                <Tooltip label="New Chat">
-                  <IconButton
-                    aria-label="New chat"
-                    icon={<AddIcon />}
-                    size="sm"
-                    onClick={createNewChat}
-                    colorScheme={buttonScheme}
-                    variant="ghost"
-                  />
-                </Tooltip>
-                <Tooltip label="Close sidebar">
-                  <IconButton
-                    aria-label="Close sidebar"
-                    icon={<CloseIcon />}
-                    size="sm"
-                    onClick={onClose}
-                    colorScheme={buttonScheme}
-                    variant="ghost"
-                  />
-                </Tooltip>
+                <IconButton
+                  aria-label="New chat"
+                  icon={<AddIcon />}
+                  size="sm"
+                  onClick={createNewChat}
+                  colorScheme={buttonScheme}
+                  variant="ghost"
+                />
+                <IconButton
+                  aria-label="Close sidebar"
+                  icon={<CloseIcon />}
+                  size="sm"
+                  onClick={onClose}
+                  colorScheme={buttonScheme}
+                  variant="ghost"
+                />
               </HStack>
             </HStack>
           </DrawerHeader>
@@ -194,19 +189,17 @@ export default function Home() {
                     {conversations[chat.id]?.title || "New Chat"}
                   </Text>
                   {chats.length > 1 && (
-                    <Tooltip label="Delete chat">
-                      <IconButton
-                        aria-label="Delete chat"
-                        icon={<DeleteIcon />}
-                        size="xs"
-                        variant="ghost"
-                        colorScheme="red"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          deleteChat(chat.id);
-                        }}
-                      />
-                    </Tooltip>
+                    <IconButton
+                      aria-label="Delete chat"
+                      icon={<DeleteIcon />}
+                      size="xs"
+                      variant="ghost"
+                      colorScheme="red"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        deleteChat(chat.id);
+                      }}
+                    />
                   )}
                 </HStack>
               ))}
@@ -219,16 +212,14 @@ export default function Home() {
       <Flex h="100vh">
         {/* Sidebar Toggle */}
         <Box position="fixed" top={4} left={4} zIndex={1}>
-          <Tooltip label="Menu">
-            <IconButton
-              aria-label="Open menu"
-              icon={<HamburgerIcon />}
-              onClick={onOpen}
-              colorScheme={buttonScheme}
-              variant="ghost"
-              borderRadius="xl"
-            />
-          </Tooltip>
+          <IconButton
+            aria-label="Open menu"
+            icon={<HamburgerIcon />}
+            onClick={onOpen}
+            colorScheme={buttonScheme}
+            variant="ghost"
+            borderRadius="xl"
+          />
         </Box>
 
         {/* Chat Container */}
@@ -238,16 +229,14 @@ export default function Home() {
               <Heading as="h1" size="xl">
                 RAG FAQ Chatbot
               </Heading>
-              <Tooltip label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}>
-                <IconButton
-                  aria-label="Toggle color mode"
-                  icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-                  onClick={toggleColorMode}
-                  variant="ghost"
-                  colorScheme={buttonScheme}
-                  borderRadius="xl"
-                />
-              </Tooltip>
+              <IconButton
+                aria-label="Toggle color mode"
+                icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+                onClick={toggleColorMode}
+                variant="ghost"
+                colorScheme={buttonScheme}
+                borderRadius="xl"
+              />
             </HStack>
 
             <VStack
@@ -335,20 +324,18 @@ export default function Home() {
                 size="lg"
                 px={6}
               />
-              <Tooltip label={isLoading ? "Stop" : "Send message"}>
-                <IconButton
-                  type="submit"
-                  aria-label={isLoading ? "Stop" : "Send message"}
-                  icon={isLoading ? <SquareCircleIcon /> : <ArrowUpIcon />}
-                  bg={sendButtonBg}
-                  color={sendButtonIconColor}
-                  borderWidth="2px"
-                  borderRadius="full"
-                  size="lg"
-                  borderColor={useColorModeValue("gray.200", "gray.600")}
-                  onClick={isLoading ? () => setIsLoading(false) : undefined}
-                />
-              </Tooltip>
+              <IconButton
+                type="submit"
+                aria-label={isLoading ? "Stop" : "Send message"}
+                icon={isLoading ? <SquareCircleIcon /> : <ArrowUpIcon />}
+                bg={sendButtonBg}
+                color={sendButtonIconColor}
+                borderWidth="2px"
+                borderRadius="full"
+                size="lg"
+                borderColor={useColorModeValue("gray.200", "gray.600")}
+                onClick={isLoading ? () => setIsLoading(false) : undefined}
+              />
             </HStack>
           </VStack>
         </Container>
