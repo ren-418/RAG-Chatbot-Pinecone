@@ -56,6 +56,28 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result. The page will auto-update as you make changes to the code.
 
+### Building and Running Production Version
+
+To create a production build and run the application:
+
+1. **Build the application:**
+   ```bash
+   npm run build
+   ```
+   This creates an optimized production build of your application.
+
+2. **Start the production server:**
+   ```bash
+   npm run start
+   ```
+   By default, this will start the server on port 3000. If port 3000 is already in use, you can specify a different port:
+   ```bash
+   npx next start -p <port-number>
+   ```
+   For example: `npx next start -p 3001`
+
+The production build is optimized for performance and should be used when deploying to production environments.
+
 ### API Integration
 
 This chatbot is designed to interact with a backend API for its RAG capabilities. The core logic for communicating with the API is located in `pages/api/chat.js`.
