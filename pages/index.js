@@ -23,7 +23,7 @@ import {
   Container,
   Tooltip,
 } from "@chakra-ui/react";
-import { SunIcon, MoonIcon, ArrowUpIcon, HamburgerIcon, AddIcon, DeleteIcon } from "@chakra-ui/icons";
+import { SunIcon, MoonIcon, ArrowUpIcon, HamburgerIcon, AddIcon, DeleteIcon, CloseIcon } from "@chakra-ui/icons";
 import { SquareCircleIcon } from '@primer/octicons-react';
 
 export default function Home() {
@@ -38,47 +38,17 @@ export default function Home() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure({ defaultIsOpen: false });
 
-  // Color palette for dark theme, inspired by ChatGPT UI
-  const chatgptDark = {
-    bgApp: "#202123", // Main app background, sidebar
-    bgInputAndResponse: "#343541", // For response bubbles, input background
-    bgQuery: "#444654", // For query bubbles, active sidebar chat
-    textPrimary: "gray.100",
-    buttonIconDefault: "whiteAlpha.900", // Default icon color for ghost buttons
-    borderColorSubtle: "transparent",
-    scrollbarTrack: "#343541",
-    scrollbarThumb: "#555663",
-    sendButtonBg: "white",
-    sendButtonIcon: "black",
-    hamburgerBg: "transparent", // Hamburger icon background (transparent in dark mode)
-    hamburgerIcon: "white", // Hamburger icon color
-  };
+  const queryBackgroundColor = useColorModeValue("gray.100", "gray.700");
+  const responseBackgroundColor = useColorModeValue("gray.200", "gray.600");
+  const textColor = useColorModeValue("gray.800", "gray.100");
+  const buttonScheme = useColorModeValue("gray", "gray");
 
-  // Color palette for light theme, inspired by ChatGPT UI
-  const chatgptLight = {
-    bgApp: "#FFFFFF", // Main app background
-    bgSidebar: "#F7F7F8", // Sidebar background
-    bgInputAndResponse: "#F7F7F8", // Input background, response bubble background
-    bgQuery: "#E0E0E0", // Query bubble background, active sidebar chat
-    textPrimary: "gray.800",
-    buttonIconDefault: "gray.700", // Default icon color for ghost buttons
-    borderColorSubtle: "transparent",
-    scrollbarTrack: "#E0E0E0",
-    scrollbarThumb: "#B0B0B0",
-    sendButtonBg: "black",
-    sendButtonIcon: "white",
-    hamburgerBg: "white", // Hamburger icon background
-    hamburgerIcon: "gray.700", // Hamburger icon color
-  };
-
-  const queryBackgroundColor = useColorModeValue(chatgptLight.bgQuery, chatgptDark.bgQuery);
-  const responseBackgroundColor = useColorModeValue(chatgptLight.bgInputAndResponse, chatgptDark.bgInputAndResponse);
-  const textColor = useColorModeValue(chatgptLight.textPrimary, chatgptDark.textPrimary);
-  const buttonScheme = useColorModeValue(chatgptLight.buttonNeutral, chatgptDark.buttonNeutral);
-  const sidebarBg = useColorModeValue(chatgptLight.bgSidebar, chatgptDark.bgApp);
-  const mainBg = useColorModeValue(chatgptLight.bgApp, chatgptDark.bgApp);
-  const currentSendButtonBg = useColorModeValue(chatgptLight.sendButtonBg, chatgptDark.sendButtonBg);
-  const currentSendButtonIconColor = useColorModeValue(chatgptLight.sendButtonIcon, chatgptDark.sendButtonIcon);
+  // New theme colors based on user's images
+  const mainBg = useColorModeValue("gray.50", "gray.900");
+  const sidebarBg = useColorModeValue("white", "gray.800");
+  const inputBg = useColorModeValue("white", "gray.700");
+  const sendButtonBg = useColorModeValue("gray.800", "white");
+  const sendButtonIconColor = useColorModeValue("white", "gray.800");
 
   useEffect(() => {
     if (conversations[activeChat]?.messages.length > 0 && chatBoxRef.current) {
@@ -166,7 +136,7 @@ export default function Home() {
   };
 
   return (
-    <Box minH="100vh" bg={mainBg} color={textColor}>
+    <Box minH="100vh" bg={mainBg}>
       <Head>
         <title>RAG FAQ Chatbot</title>
         <meta name="description" content="RAG FAQ Chatbot" />
@@ -176,21 +146,32 @@ export default function Home() {
       {/* Sidebar */}
       <Drawer isOpen={isOpen} placement="left" onClose={onClose}>
         <DrawerOverlay />
-        <DrawerContent bg={sidebarBg} borderRight="0" borderColor={useColorModeValue(chatgptLight.borderColorSubtle, chatgptDark.borderColorSubtle)}>
-          <DrawerHeader borderBottomWidth="0" borderColor={useColorModeValue(chatgptLight.borderColorSubtle, chatgptDark.borderColorSubtle)}>
+        <DrawerContent bg={sidebarBg} borderRight="1px" borderColor={useColorModeValue("gray.200", "gray.700")}>
+          <DrawerHeader borderBottomWidth="1px" borderColor={useColorModeValue("gray.200", "gray.700")}>
             <HStack justify="space-between" w="full" px={2}>
               <Heading size="md">Chats</Heading>
-              <Tooltip label="New Chat">
-                <IconButton
-                  aria-label="New chat"
-                  icon={<AddIcon />}
-                  size="sm"
-                  onClick={createNewChat}
-                  color="white" // Always white for add icon, matches the image regardless of theme
-                  variant="ghost"
-                  _hover={{ bg: "transparent" }}
-                />
-              </Tooltip>
+              <HStack spacing={2}>
+                <Tooltip label="New Chat">
+                  <IconButton
+                    aria-label="New chat"
+                    icon={<AddIcon />}
+                    size="sm"
+                    onClick={createNewChat}
+                    colorScheme={buttonScheme}
+                    variant="ghost"
+                  />
+                </Tooltip>
+                <Tooltip label="Close sidebar">
+                  <IconButton
+                    aria-label="Close sidebar"
+                    icon={<CloseIcon />}
+                    size="sm"
+                    onClick={onClose}
+                    colorScheme={buttonScheme}
+                    variant="ghost"
+                  />
+                </Tooltip>
+              </HStack>
             </HStack>
           </DrawerHeader>
 
@@ -201,8 +182,7 @@ export default function Home() {
                   key={chat.id}
                   px={4}
                   py={3}
-                  bg={activeChat === chat.id ? useColorModeValue(chatgptLight.bgQuery, chatgptDark.bgQuery) : "transparent"}
-                  _hover={{ bg: "transparent" }}
+                  bg={activeChat === chat.id ? useColorModeValue("gray.100", "gray.700") : "transparent"}
                   cursor="pointer"
                   onClick={() => {
                     setActiveChat(chat.id);
@@ -210,7 +190,7 @@ export default function Home() {
                   }}
                   justify="space-between"
                 >
-                  <Text noOfLines={1} flex={1} color={textColor}>
+                  <Text noOfLines={1} flex={1}>
                     {conversations[chat.id]?.title || "New Chat"}
                   </Text>
                   {chats.length > 1 && (
@@ -220,12 +200,11 @@ export default function Home() {
                         icon={<DeleteIcon />}
                         size="xs"
                         variant="ghost"
-                        color={textColor} // Use textColor for the delete icon
+                        colorScheme="red"
                         onClick={(e) => {
                           e.stopPropagation();
                           deleteChat(chat.id);
                         }}
-                        _hover={{ bg: "transparent" }}
                       />
                     </Tooltip>
                   )}
@@ -243,12 +222,11 @@ export default function Home() {
           <Tooltip label="Menu">
             <IconButton
               aria-label="Open menu"
-              icon={<HamburgerIcon color={useColorModeValue(chatgptLight.hamburgerIcon, chatgptDark.hamburgerIcon)} />}
+              icon={<HamburgerIcon />}
               onClick={onOpen}
-              bg={useColorModeValue(chatgptLight.hamburgerBg, chatgptDark.hamburgerBg)}
+              colorScheme={buttonScheme}
               variant="ghost"
               borderRadius="xl"
-              _hover={{ bg: "transparent" }}
             />
           </Tooltip>
         </Box>
@@ -257,18 +235,17 @@ export default function Home() {
         <Container maxW="container.xl" py={8} px={4}>
           <VStack spacing={6} h="full" border="none">
             <HStack justifyContent="space-between" w="full" pt={12}>
-              <Heading as="h1" size="xl" color={textColor}>
+              <Heading as="h1" size="xl">
                 RAG FAQ Chatbot
               </Heading>
               <Tooltip label={`Switch to ${colorMode === 'light' ? 'dark' : 'light'} mode`}>
                 <IconButton
                   aria-label="Toggle color mode"
-                  icon={colorMode === "light" ? <MoonIcon color={textColor} /> : <SunIcon color={textColor} />}
+                  icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
                   onClick={toggleColorMode}
                   variant="ghost"
                   colorScheme={buttonScheme}
                   borderRadius="xl"
-                  _hover={{ bg: "transparent" }}
                 />
               </Tooltip>
             </HStack>
@@ -283,17 +260,17 @@ export default function Home() {
               borderWidth="0"
               borderRadius="2xl"
               p={6}
-              bg={mainBg}
+              bg={useColorModeValue("white", "gray.800")}
               css={{
                 "&::-webkit-scrollbar": {
                   width: "8px",
                 },
                 "&::-webkit-scrollbar-track": {
-                  background: useColorModeValue(chatgptLight.scrollbarTrack, chatgptDark.scrollbarTrack),
+                  background: useColorModeValue("gray.100", "gray.700"),
                   borderRadius: "10px",
                 },
                 "&::-webkit-scrollbar-thumb": {
-                  background: useColorModeValue(chatgptLight.scrollbarThumb, chatgptDark.scrollbarThumb),
+                  background: useColorModeValue("gray.400", "gray.500"),
                   borderRadius: "10px",
                 },
               }}
@@ -309,10 +286,11 @@ export default function Home() {
                     py={3}
                     borderRadius="xl"
                     maxW="70%"
-                    borderWidth="0"
+                    borderWidth="1px"
+                    borderColor={useColorModeValue("gray.200", "gray.600")}
                     boxShadow="sm"
                   >
-                    <Text color={textColor}>{item.message}</Text>
+                    <Text>{item.message}</Text>
                   </Box>
                 </Flex>
               ))}
@@ -323,12 +301,13 @@ export default function Home() {
                     px={6}
                     py={3}
                     borderRadius="xl"
-                    borderWidth="0"
+                    borderWidth="1px"
+                    borderColor={useColorModeValue("gray.200", "gray.600")}
                     boxShadow="sm"
                   >
                     <HStack>
-                      <Spinner size="sm" color={textColor} />
-                      <Text color={textColor}>Thinking...</Text>
+                      <Spinner size="sm" />
+                      <Text>Thinking...</Text>
                     </HStack>
                   </Box>
                 </Flex>
@@ -345,30 +324,28 @@ export default function Home() {
                     handleSubmit(e);
                   }
                 }}
-                bg={useColorModeValue(chatgptLight.bgInputAndResponse, chatgptDark.bgInputAndResponse)}
-                borderWidth="0"
+                bg={inputBg}
+                borderWidth="2px"
                 borderRadius="full"
-                borderColor={useColorModeValue(chatgptLight.borderColorSubtle, chatgptDark.borderColorSubtle)}
+                borderColor={useColorModeValue("gray.200", "gray.600")}
                 _focus={{
-                  borderColor: useColorModeValue(chatgptLight.borderColorSubtle, chatgptDark.borderColorSubtle),
+                  borderColor: useColorModeValue("gray.400", "gray.500"),
                   boxShadow: "none",
                 }}
                 size="lg"
                 px={6}
-                color={textColor}
               />
               <Tooltip label={isLoading ? "Stop" : "Send message"}>
                 <IconButton
                   type="submit"
                   aria-label={isLoading ? "Stop" : "Send message"}
-                  icon={isLoading ? <SquareCircleIcon color={currentSendButtonIconColor} /> : <ArrowUpIcon color={currentSendButtonIconColor} />}
-                  bg={currentSendButtonBg}
-                  color={currentSendButtonIconColor}
-                  borderWidth="0"
+                  icon={isLoading ? <SquareCircleIcon /> : <ArrowUpIcon />}
+                  bg={sendButtonBg}
+                  color={sendButtonIconColor}
+                  borderWidth="2px"
                   borderRadius="full"
                   size="lg"
-                  _hover={{}}
-                  transition="none"
+                  borderColor={useColorModeValue("gray.200", "gray.600")}
                   onClick={isLoading ? () => setIsLoading(false) : undefined}
                 />
               </Tooltip>
