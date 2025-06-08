@@ -334,6 +334,17 @@ export default function Home() {
                 borderRadius="full"
                 size="lg"
                 borderColor={useColorModeValue("gray.200", "gray.600")}
+                _hover={{
+                  bg: sendButtonBg,
+                  color: sendButtonIconColor,
+                }}
+                _focus={{
+                  boxShadow: "none",
+                }}
+                _active={{
+                  bg: sendButtonBg,
+                  color: sendButtonIconColor,
+                }}
                 onClick={isLoading ? () => setIsLoading(false) : undefined}
               />
             </HStack>
