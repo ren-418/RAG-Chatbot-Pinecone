@@ -35,7 +35,7 @@ Make sure you have Node.js and npm (Node Package Manager) installed.
 
 1.  **Clone the repository:**
     ```bash
-    git clone <your-repository-url>
+    git clone https://github.com/ren-418/RAG-Chatbot-Pinecone.git
     cd 1.RAG_FAQ_Chatbot
     ```
 2.  **Install dependencies:**
